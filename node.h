@@ -9,6 +9,7 @@ class Node {
 public:
     Node(int month, int day, int year, std::string username, std::string tweet);
     ~Node();
+    Node();
     int get_date();
     std::string get_tweet();
     std::string get_username();
