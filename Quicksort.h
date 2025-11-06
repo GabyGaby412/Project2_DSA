@@ -28,10 +28,10 @@ int pivot(std::vector<Node> date, int low, int high) {
         }
 
         if (up < down) {
-            swap(data[up].get_date(), data[down].get_date());
+            swap(date[up].get_date(), date[down].get_date());
         }
     }
-    swap(data[low].get_date(), data[down].get_date());
+    swap(date[low].get_date(), date[down].get_date());
     return down;
 }
 
