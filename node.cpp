@@ -52,13 +52,13 @@ int Node::get_tweet_len() {
 int Node::get_time() {
     return this->time;
 }
-void set_sentiment(int s) { sentiment = s; }
-void set_id(int i) { id = i; }
-void set_date(string& d) { date_string = d; }
-void set_query(string& q) { query = q; }
-void set_username(string& u) { username = u; }
-void set_tweet(string& t) { tweet = t; }
-void set_tokens(vector<string>& tokks) {
+void Node::set_sentiment(int s) { sentiment = s; }
+void Node::set_id(int i) { id = i; }
+void Node::set_date(string& d) { date_string = d; }
+void Node::set_query(string& q) { query = q; }
+void Node::set_username(string& u) { username = u; }
+void Node::set_tweet(string& t) { tweet = t; }
+void Node::set_tokens(vector<string>& tokks) {
         tokens = tokks;
         tweet_len = tokens.size();
     }
