@@ -2,13 +2,15 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include "node.h"
+#include "Quicksort.h"
 
 using namespace std;
 
 struct Tweet {
   int sentiment;
   int id;
-  int date;
+  string date;
   string query;
   string user;
   string text;
@@ -37,8 +39,7 @@ struct Tweet {
       getline(ss, line, ',');
       tweet.id = stoi(line);
 
-      getline(ss, line, ',');
-      tweet.date = stoi(line);
+      getline(ss, tweet.date, ',');
 
       getline(ss, tweet.query, ',');
       getline(ss, tweet.user, ',');
@@ -67,7 +68,7 @@ struct Tweet {
 
     tweet.tweet_length = tweet.words.size();
     //have to handle case where last column tokens is parsed.
-      tweets.push_back(tweet);
+    tweets.push_back(tweet);
     }
     return tweets;
  }
@@ -76,15 +77,14 @@ struct Tweet {
    string filename = "dataset_tokenized";
    vector<Tweet> tweets = read_tweets(filename);
    Tweet tweet;
-   cout << tweets[0] << endl;
 
    if (tweets.empty()) {
      return 1;
    }
 
-   vector<int> data1 = tweet.date;
+   vector<Node> data1 = tweets;
    auto start1 = chrono::high_resolution_clock::now();
-   // MergeSort(dataForAlgo1);
+   quickSort(data1, 0, data1.size() - 1);
    auto stop1 = chrono::high_resolution_clock::now();
    auto duration1 = chrono::duration_cast<chrono::microseconds>(stop1 - start1);
    cout << "Time taken by Merge Sort: " << duration1.count() << endl;

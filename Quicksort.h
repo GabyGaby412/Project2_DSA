@@ -2,6 +2,7 @@
 #include <array>
 #include <utility>
 #include <vector>
+#include "node.h"
 using namespace std;
 #pragma once
 
