@@ -18,8 +18,8 @@ struct Tweet {
   int tweet_length;
  };
 
- vector<Tweet> read_tweets(string filename) {
-   vector<Tweet> tweets;
+ vector<Node> read_tweets(string& filename) {
+   vector<Node> tweets;
    ifstream file(filename);
 
    if (!file.is_open()) {
@@ -30,52 +30,54 @@ struct Tweet {
     string line;
     while (getline(file, line)) {
       istringstream ss(line);
-      vector<Tweet> tweets;
-      Tweet tweet;
+      Node tweet;
 
       getline(ss, line, ',');
-      tweet.sentiment = stoi(line);
+      tweet.set_sentiment(stoi(line));
 
       getline(ss, line, ',');
-      tweet.id = stoi(line);
+      tweet.set_id(stoi(line));
 
-      getline(ss, tweet.date, ',');
+      getline(ss, line, ',');
+      tweet.set_date(line);
 
-      getline(ss, tweet.query, ',');
-      getline(ss, tweet.user, ',');
+      getline(ss, line, ',');
+      tweet.set_query(line);
+
+      getline(ss, line, ',');
+      tweet.set_username(line);
 
       if (ss.peek() == '"') {
-        getline(ss, tweet.text, '"');
-        getline(ss, tweet.text, '"');
+        getline(ss, line, '"');
+        getline(ss, line, '"');
+        tweet.set_tweet(line);
+        ss.ignore();
       }
-      else {
-          getline(ss, tweet.text, ',');
-       }
-      //parsing the array of words in the qoute.
-       getline(ss, line);
-       tweet.words.clear();
-
-       for (char c : line) {
-         if (c == '[' || c == ']' || c == ',') {
+      //parsing the array of words in the quote.
+      getline(ss, line);
+      for (char c : line) {
+         if (c == '[' || c == ']' || c == ',' || c == '\'') {
            c = ' ';
          }
        }
-       string word;
-       stringstream tokenStream(line);
-       while (getline(tokenStream, word, ',')) {
-         tweet.words.push_back(word);
-       }
+    string word;
+    //TA suggested I use tokenStream since it parses the tokens on its own.
+    stringstream tokenStream(line);
+    vector<string> tokens;
+    while (getline(tokenStream, word, ',')) {
+    tokens.push_back(word);
+    }
+    tweet.set_tokens(tokens);
 
-    tweet.tweet_length = tweet.words.size();
-    //have to handle case where last column tokens is parsed.
+
     tweets.push_back(tweet);
     }
     return tweets;
  }
 
  int main() {
-   string filename = "dataset_tokenized";
-   vector<Tweet> tweets = read_tweets(filename);
+   string filename = "tokenized_dataset.csv";
+   vector<Node> tweets = read_tweets(filename);
    Tweet tweet;
 
    if (tweets.empty()) {
@@ -84,19 +86,26 @@ struct Tweet {
 
    vector<Node> data1 = tweets;
    auto start1 = chrono::high_resolution_clock::now();
-   quickSort(data1, 0, data1.size() - 1);
+   quickSort_len(data1, 0, data1.size() - 1);
    auto stop1 = chrono::high_resolution_clock::now();
    auto duration1 = chrono::duration_cast<chrono::microseconds>(stop1 - start1);
    cout << "Time taken by Merge Sort: " << duration1.count() << endl;
 
-   vector<int> data2 = tweets.date;
+   cout << "First 5 tweets after sorting:\n";
+   for (int i = 0; i < 5; ++i) {
+     cout << "User: " << data1[i].get_username()
+          << " | Length: " << tweets[i].get_tweet_len()
+          << " | Text: " << tweets[i].get_tweet() << "\n";
+   }
+
+   vector<Node> data2 = tweets;
    auto start2 = chrono::high_resolution_clock::now();
    // HeapSort(dataForAlgo1);
    auto stop2 = chrono::high_resolution_clock::now();
    auto duration2 = chrono::duration_cast<chrono::microseconds>(stop2 - start2);
    cout << "Time taken by Merge Sort: " << duration2.count() << endl;
 
-   vector<int> data3 = tweets.tweet_length;
+
 }
 //check now
 //will do this again

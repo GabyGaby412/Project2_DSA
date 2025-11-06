@@ -2,11 +2,15 @@
 
 //default constructor
 Node::Node() {
+    this->sentiment = 0;
+    this->id = 0;
     this->date = 0;
     this->username = "";
     this->tweet = "";
     this->tweet_len = 0;
     this->time = 0;
+    this->query = "";
+
 }
 //parameterized constructor
 Node::Node(int month, int day, int year, std::string username, std::string tweet, std::string time_s) {
