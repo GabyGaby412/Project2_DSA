@@ -39,6 +39,7 @@ int pivot(std::vector<Node> date, int low, int high) {
 
 //The quicksort
 
+
 void quickSort(vector<Node> &date, int low, int high) {
     if (low < high) {
         int middle = pivot(date, low, high);
