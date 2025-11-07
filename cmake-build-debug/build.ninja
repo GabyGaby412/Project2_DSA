@@ -55,6 +55,12 @@ build CMakeFiles/project2_dsa.dir/main.cpp.o: CXX_COMPILER__project2_dsa_unscann
   OBJECT_DIR = CMakeFiles/project2_dsa.dir
   OBJECT_FILE_DIR = CMakeFiles/project2_dsa.dir
 
+build CMakeFiles/project2_dsa.dir/node.cpp.o: CXX_COMPILER__project2_dsa_unscanned_Debug /Users/gabrielavelazquez/CLionProjects/project2_dsa/Project2_DSA/node.cpp || cmake_object_order_depends_target_project2_dsa
+  DEP_FILE = CMakeFiles/project2_dsa.dir/node.cpp.o.d
+  FLAGS = -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/project2_dsa.dir
+  OBJECT_FILE_DIR = CMakeFiles/project2_dsa.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target project2_dsa
@@ -63,7 +69,7 @@ build CMakeFiles/project2_dsa.dir/main.cpp.o: CXX_COMPILER__project2_dsa_unscann
 #############################################
 # Link the executable project2_dsa
 
-build project2_dsa: CXX_EXECUTABLE_LINKER__project2_dsa_Debug CMakeFiles/project2_dsa.dir/main.cpp.o
+build project2_dsa: CXX_EXECUTABLE_LINKER__project2_dsa_Debug CMakeFiles/project2_dsa.dir/main.cpp.o CMakeFiles/project2_dsa.dir/node.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk
   OBJECT_DIR = CMakeFiles/project2_dsa.dir
   POST_BUILD = :

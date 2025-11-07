@@ -5,4 +5,6 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_executable(
         project2_dsa main.cpp
+        node.cpp
+        cmake-build-debug/tokenized_dataset.csv
 )

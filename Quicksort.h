@@ -79,7 +79,7 @@ int pivot_len(std::vector<Node>& tweet_length, int low, int high) {
 }
 
 
-//fixed
+//The quicksort
 
 
 void quickSort_len(vector<Node> &tweet_length, int low, int high) {

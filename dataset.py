@@ -19,7 +19,7 @@ df["tokens"] = [re.findall(r"\b\w+\b", str(t).lower()) for t in df["text"]]
 # df.to_csv("tokenized_dataset.csv", index=False)
 # print("✅ Tokenized words saved to tokenized_dataset.csv")
 
-df = pd.read_csv("tokenized_dataset.csv")
+df = pd.read_csv("cmake-build-debug/tokenized_dataset.csv")
 
 df["tokens"] = df["tokens"].apply((ast.literal_eval))
 df["token_count"] = df["tokens"].apply(len)
