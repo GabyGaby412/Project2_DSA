@@ -18,7 +18,7 @@ struct Tweet {
   int tweet_length;
  };
 
- vector<Node> read_tweets(string& filename) {
+ vector<Node> read_tweets(string filename) {
    vector<Node> tweets;
    ifstream file(filename);
 
@@ -76,8 +76,8 @@ struct Tweet {
  }
 
  int main() {
-   string filename = "tokenized_dataset.csv";
-   vector<Node> tweets = read_tweets(filename);
+
+   vector<Node> tweets = read_tweets("tokenized_dataset.csv");
    Tweet tweet;
 
    if (tweets.empty()) {
@@ -86,18 +86,17 @@ struct Tweet {
 
    vector<Node> data1 = tweets;
    auto start1 = chrono::high_resolution_clock::now();
-   quickSort_len(data1, 0, data1.size() - 1);
+   quickSort_len(data1, 0, 100);
    auto stop1 = chrono::high_resolution_clock::now();
-   auto duration1 = chrono::duration_cast<chrono::microseconds>(stop1 - start1);
+   auto duration1 = chrono::duration_cast<chrono::seconds>(stop1 - start1);
    cout << "Time taken by Merge Sort: " << duration1.count() << endl;
 
    cout << "First 5 tweets after sorting:\n";
-   for (int i = 0; i < 5; ++i) {
+   for (int i = 0; i < 10; ++i) {
      cout << "User: " << data1[i].get_username()
-          << " | Length: " << tweets[i].get_tweet_len()
-          << " | Text: " << tweets[i].get_tweet() << "\n";
+          << " | Length: " << data1[i].get_tweet_len()
+           << " | Text: " << data1[i].get_tweet() << "\n";
    }
-
    vector<Node> data2 = tweets;
    auto start2 = chrono::high_resolution_clock::now();
    // HeapSort(dataForAlgo1);
