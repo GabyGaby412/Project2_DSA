@@ -30,9 +30,9 @@ public:
     //Setters;
     void set_sentiment(int s);
     void set_id(int i);
-    void set_date(string& d);
-    void set_query(string& q);
-    void set_username(string& u);
-    void set_tweet(string& t);
-    void set_tokens(std::vector<std::string>& tokks);
+    void set_date(const string& d);
+    void set_query(const string& q);
+    void set_username(const string& u);
+    void set_tweet(const string& t);
+    void set_tokens(const std::vector<std::string>& tokks);
 };
