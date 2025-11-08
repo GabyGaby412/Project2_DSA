@@ -102,7 +102,7 @@ struct Tweet {
    ofstream outfile(outpath);
    outfile << "tweet, length" << endl;
    for (int i = 0; i < 10; ++i) {
-     outfile << data1[i].get_username() << ", " <<  data1[i].get_tweet_len() << endl;
+     outfile << "T" << i  << ", " <<  data1[i].get_tweet_len() << endl;
    }
    outfile.close();
 
