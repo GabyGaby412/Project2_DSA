@@ -97,6 +97,15 @@ struct Tweet {
           << " | Length: " << data1[i].get_tweet_len()
            << " | Text: " << data1[i].get_tweet() << "\n";
    }
+
+   string outpath = "/Users/gabrielavelazquez/CLionProjects/project2_dsa/Project2_DSA/tweet_lengths.csv";
+   ofstream outfile(outpath);
+   outfile << "tweet, length" << endl;
+   for (int i = 0; i < 10; ++i) {
+     outfile << data1[i].get_username() << ", " <<  data1[i].get_tweet_len() << endl;
+   }
+   outfile.close();
+
    vector<Node> data2 = tweets;
    auto start2 = chrono::high_resolution_clock::now();
    // HeapSort(dataForAlgo1);

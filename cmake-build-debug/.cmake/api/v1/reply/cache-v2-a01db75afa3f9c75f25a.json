@@ -1118,6 +1118,30 @@
 			"value" : "FALSE"
 		},
 		{
+			"name" : "Python3_EXECUTABLE",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "No help, variable specified on the command line."
+				}
+			],
+			"type" : "UNINITIALIZED",
+			"value" : "/Users/gabrielavelazquez/CLionProjects/project2_dsa/Project2_DSA/.venv/bin/python"
+		},
+		{
+			"name" : "Python_EXECUTABLE",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "No help, variable specified on the command line."
+				}
+			],
+			"type" : "UNINITIALIZED",
+			"value" : "/Users/gabrielavelazquez/CLionProjects/project2_dsa/Project2_DSA/.venv/bin/python"
+		},
+		{
 			"name" : "project2_dsa_BINARY_DIR",
 			"properties" : 
 			[

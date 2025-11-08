@@ -1,10 +1,9 @@
 #DATASET TOKENIZATION FOR DSA PROJECT 2
 #make sure to run the steps in readme before running this code
 import pandas as pd
-import nltk
 import re
 import ast
-from nltk.tokenize import word_tokenize
+
 df = pd.read_csv('training.1600000.processed.noemoticon.csv', 
                  encoding='latin-1', 
                  header=None,
@@ -30,5 +29,7 @@ df["tweet_length"] = tweet_text.apply(len)
 # print(tweet_length)
 # tweet_lengths = df['length'].tolist()
 # print(tweet_lengths[10])
+
+
 
 
