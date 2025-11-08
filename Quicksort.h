@@ -43,8 +43,8 @@ int pivot(std::vector<Node>& date, int low, int high) {
 void quickSort_time(vector<Node> &date, int low, int high) {
     if (low < high) {
         int middle = pivot(date, low, high);
-        quickSort(date, low, middle -1);
-        quickSort(date, middle +1, high);
+        quickSort_time(date, low, middle -1);
+        quickSort_time(date, middle +1, high);
 
     }
 }
