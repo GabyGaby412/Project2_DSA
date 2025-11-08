@@ -10,17 +10,6 @@
 
 using namespace std;
 
-struct Tweet {
-  int sentiment;
-  int id;
-  string date;
-  string query;
-  string user;
-  string text;
-  vector<string> words;
-  int tweet_length;
- };
-
  vector<Node> read_tweets(string filename) {
    vector<Node> tweets;
    ifstream file(filename);
@@ -84,7 +73,6 @@ struct Tweet {
 
  int main() {
    vector<Node> tweets = read_tweets("tokenized_dataset.csv");
-   Tweet tweet;
 
    if (tweets.empty()) {
      return 1;
@@ -116,19 +104,6 @@ struct Tweet {
            << " | Text: " << data1[i].get_tweet() << "\n";
    }
 
-   // auto start1_time = chrono::high_resolution_clock::now();
-   // quickSort_time(data1, 0, tweets.size() - 1);
-   // auto stop1_time = chrono::high_resolution_clock::now();
-   // auto duration1_time = chrono::duration_cast<chrono::milliseconds>(stop1_time - start1_time);
-   // cout << "Time taken by Merge Sort: " << duration1_time.count() << endl;
-   //
-   // cout << "Randomized tweets after sorting by date:\n";
-   // for (int i = 0 ; i < 10; i++) {
-   //   cout << "T"<< i << " | " << "User: " << data1[i].get_username()
-   //        << " | Time: " << data1[i].get_date_time()
-   //         << " | Text: " << data1[i].get_tweet() << "\n";
-   // }
-
    vector<Node> data2 = tweets;
    auto start2 = chrono::high_resolution_clock::now();
    tweet_merge_sort(data2);
@@ -142,10 +117,6 @@ struct Tweet {
           << " | Length: " << data2[i].get_tweet_len()
           << " | Text: " << data1[i].get_tweet() << "\n";
    }
-
-//code for randomizing the data points for graph
-
-
 
    string outpath = "tweet_lengths.csv";
    ofstream outfile(outpath);

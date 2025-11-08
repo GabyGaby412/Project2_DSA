@@ -1,5 +1,8 @@
 #DATASET TOKENIZATION FOR DSA PROJECT 2
-#make sure to run the steps in readme before running this code
+#NOTE: this code was run by Gaby at the beginning when the dataset had to be tokenized
+#after downloading the dataset, hence why the first file isn't found in github, the file was too big to add
+# so just the tokenized file was added, which is the "tokenized_dataset.csv"
+#This code doesn't really work right now because of that.
 import pandas as pd
 import re
 import ast
