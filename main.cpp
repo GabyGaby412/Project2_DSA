@@ -4,6 +4,7 @@
 #include <sstream>
 #include "node.h"
 #include "Quicksort.h"
+#include "merge_sort.h"
 
 using namespace std;
 
@@ -88,7 +89,7 @@ struct Tweet {
    auto start1 = chrono::high_resolution_clock::now();
    quickSort_len(data1, 0, 100);
    auto stop1 = chrono::high_resolution_clock::now();
-   auto duration1 = chrono::duration_cast<chrono::seconds>(stop1 - start1);
+   auto duration1 = chrono::duration_cast<chrono::milliseconds>(stop1 - start1);
    cout << "Time taken by Merge Sort: " << duration1.count() << endl;
 
    cout << "First 5 tweets after sorting:\n";
@@ -108,10 +109,17 @@ struct Tweet {
 
    vector<Node> data2 = tweets;
    auto start2 = chrono::high_resolution_clock::now();
-   // HeapSort(dataForAlgo1);
+   tweet_len_merge_sort_helper(data2, 0, 100);
    auto stop2 = chrono::high_resolution_clock::now();
-   auto duration2 = chrono::duration_cast<chrono::microseconds>(stop2 - start2);
-   cout << "Time taken by Merge Sort: " << duration2.count() << endl;
+   auto duration2 = chrono::duration_cast<chrono::milliseconds>(stop2 - start2);
+   cout << "\nTime taken by Merge Sort: " << duration2.count() << endl;
+
+   cout << "First 5 tweets after merge sorting:\n";
+   for (int i = 0; i < 10; ++i) {
+     cout << "User: " << data2[i].get_username()
+          << " | Length: " << data2[i].get_tweet_len()
+           << " | Text: " << data2[i].get_tweet() << "\n";
+   }
 
 
 }

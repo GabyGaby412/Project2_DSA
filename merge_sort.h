@@ -2,10 +2,10 @@
 #include "node.h"
 using namespace std;
 
-void date_merge(std::vector<Node*>& list, int left, int mid, int right) {
+void date_merge(std::vector<Node>& list, int left, int mid, int right) {
     //start the merge by creating two arrays from the lower vectors
-    std::vector<Node*> X;
-    std::vector<Node*> Y;
+    std::vector<Node> X;
+    std::vector<Node> Y;
     int lower = mid - left + 1;
     int upper = right - mid;
     for (int i = 0; i < lower; i++) {
@@ -21,7 +21,7 @@ void date_merge(std::vector<Node*>& list, int left, int mid, int right) {
     //while both list iterators are not at their end
     while (i < lower && j < upper) {
         //if left < right
-        if (X[i]->get_date_time() < Y[j]->get_date_time()) {
+        if (X[i].get_date_time() < Y[j].get_date_time()) {
             list[k] = X[i];
             i++;
         }
@@ -45,7 +45,7 @@ void date_merge(std::vector<Node*>& list, int left, int mid, int right) {
     }
 }
 //recursively creates lists of size 1 to merge then calls the merge function on each list
-void date_merge_sort_helper(std::vector<Node*>& list, int left, int right) {
+void date_merge_sort_helper(std::vector<Node>& list, int left, int right) {
     if (left < right) {
         int mid = left + (right - left) / 2;
         date_merge_sort_helper(list, left, mid);
@@ -55,14 +55,14 @@ void date_merge_sort_helper(std::vector<Node*>& list, int left, int right) {
     }
 }
 //calls the helper with the list size of the inputted list
-void date_merge_sort(std::vector<Node*>& list) {
+void date_merge_sort(std::vector<Node>& list) {
     date_merge_sort_helper(list, 0, list.size()-1);
 }
 //same but for word count
-void str_len_merge(std::vector<Node*>& list, int left, int mid, int right) {
+void str_len_merge(std::vector<Node>& list, int left, int mid, int right) {
     //start the merge by creating two arrays from the lower vectors
-    std::vector<Node*> X;
-    std::vector<Node*> Y;
+    std::vector<Node> X;
+    std::vector<Node> Y;
     int lower = mid - left + 1;
     int upper = right - mid;
     for (int i = 0; i < lower; i++) {
@@ -75,7 +75,7 @@ void str_len_merge(std::vector<Node*>& list, int left, int mid, int right) {
     i = j = 0;
     k = left;
     while (i < lower && j < upper) {
-        if (X[i]->get_tweet_len() < Y[j]->get_tweet_len()) {
+        if (X[i].get_tweet_len() < Y[j].get_tweet_len()) {
             list[k] = X[i];
             i++;
         }
@@ -95,7 +95,7 @@ void str_len_merge(std::vector<Node*>& list, int left, int mid, int right) {
         k++;
     }
 }
-void tweet_len_merge_sort_helper(std::vector<Node*>& list, int left, int right) {
+void tweet_len_merge_sort_helper(std::vector<Node>& list, int left, int right) {
     if (left < right) {
         int mid = left + (right - left) / 2;
         tweet_len_merge_sort_helper(list, left, mid);
@@ -105,6 +105,6 @@ void tweet_len_merge_sort_helper(std::vector<Node*>& list, int left, int right) 
     }
 }
 
-void tweet_merge_sort(std::vector<Node*>& list) {
+void tweet_merge_sort(std::vector<Node>& list) {
     tweet_len_merge_sort_helper(list, 0, list.size()-1);
 }
