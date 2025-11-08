@@ -30,6 +30,7 @@ void date_merge(std::vector<Node>& list, int left, int mid, int right) {
             list[k] = Y[j];
             j++;
         }
+        k++;
     }
     //Y is empty now so just push the left list
     while (i < lower) {
@@ -83,6 +84,7 @@ void str_len_merge(std::vector<Node>& list, int left, int mid, int right) {
             list[k] = Y[j];
             j++;
         }
+        k++;
     }
     while (i < lower) {
         list[k] = X[i];
