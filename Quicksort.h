@@ -15,14 +15,14 @@ int pivot(std::vector<Node>& date, int low, int high) {
 
     while (up < down) {
         for (int i = up; i < high; i++) {
-            if (date[up].get_date() > pivot) {
+            if (date[up].get_date_time() > pivot) {
                 break;
             }
             up++;
         }
 
         for (int j = high; j > low; j--) {
-            if (date[down].get_date() < pivot) {
+            if (date[down].get_date_time() < pivot) {
                 break;
             }
             down--;
