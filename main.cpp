@@ -147,7 +147,7 @@ struct Tweet {
 
 
 
-   string outpath = "/Users/gabrielavelazquez/CLionProjects/project2_dsa/Project2_DSA/tweet_lengths.csv";
+   string outpath = "tweet_lengths.csv";
    ofstream outfile(outpath);
    outfile << "tweet, length" << endl;
    for (int i : random_points) {
@@ -155,7 +155,7 @@ struct Tweet {
    }
    outfile.close();
 
-   string outpath2 = "/Users/gabrielavelazquez/CLionProjects/project2_dsa/Project2_DSA/sorting_time.csv";\
+   string outpath2 = "sorting_time.csv";\
    ofstream outfile2(outpath2);
    outfile2 << "sorting, time" << endl;
    //outfile2 <<  ", " << "0" << endl;
