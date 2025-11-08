@@ -95,7 +95,7 @@ using namespace std;
    quickSort_len(data1, 0, tweets.size() - 1);
    auto stop1 = chrono::high_resolution_clock::now();
    auto duration1 = chrono::duration_cast<chrono::milliseconds>(stop1 - start1);
-   cout << "Time taken by Merge Sort: " << duration1.count() << endl;
+   cout << "Time taken by Quick Sort: " << duration1.count() << endl;
 
    cout << "Randomized tweets_lengths after sorting:\n";
    for (int i  : random_points) {
