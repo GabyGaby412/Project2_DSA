@@ -55,7 +55,7 @@ struct Tweet {
         tweet.set_tweet(line);
         ss.ignore();
       }
-      //parsing the array of words in the quote.
+
       getline(ss, line);
       for (char c : line) {
          if (c == '[' || c == ']' || c == ',' || c == '\'') {
@@ -123,6 +123,3 @@ struct Tweet {
    }
 ///
 
-}
-//check now
-//will do this again
