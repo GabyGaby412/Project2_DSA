@@ -10,7 +10,7 @@ Node::Node() {
     this->tweet_len = 0;
     this->time = 0;
     this->query = "";
-
+    this->date_time = 0;
 }
 //parameterized constructor
 Node::Node(int month, int day, int year, std::string username, std::string tweet, std::string time_s) {
@@ -35,6 +35,10 @@ Node::Node(int month, int day, int year, std::string username, std::string tweet
     time_num += (stoi(time_s.substr(3, 2)) * 60);
     time_num += stoi(time_s.substr(6, 2));
     this->time = time_num;
+    int temp_date_time = 0;
+    temp_date_time = temp * 24 * 60 * 60;
+    temp_date_time += time_num;
+    this->date_time = temp_date_time;
 }
 //fetch functions
 int Node::get_date() {
@@ -51,6 +55,9 @@ int Node::get_tweet_len() {
 }
 int Node::get_time() {
     return this->time;
+}
+int Node::get_date_time() {
+    return this->date_time;
 }
 void Node::set_sentiment(int s) { sentiment = s; }
 void Node::set_id(int i) { id = i; }
