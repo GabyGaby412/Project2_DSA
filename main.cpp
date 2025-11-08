@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <chrono>
 #include "node.h"
 #include "Quicksort.h"
 #include "merge_sort.h"
