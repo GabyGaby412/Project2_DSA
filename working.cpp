@@ -72,7 +72,7 @@ using namespace std;
  }
 
  int main() {
-   vector<Node> tweets = read_tweets("tokenized_dataset.csv");
+   vector<Node> tweets = read_tweets("Project2_DSA/tokenized_dataset.csv");
 
    if (tweets.empty()) {
      return 1;
