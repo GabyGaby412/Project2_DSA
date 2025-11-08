@@ -109,16 +109,16 @@ struct Tweet {
 
    vector<Node> data2 = tweets;
    auto start2 = chrono::high_resolution_clock::now();
-   tweet_len_merge_sort_helper(data2, 0, 100);
+   tweet_merge_sort(data2);
    auto stop2 = chrono::high_resolution_clock::now();
    auto duration2 = chrono::duration_cast<chrono::milliseconds>(stop2 - start2);
    cout << "\nTime taken by Merge Sort: " << duration2.count() << endl;
 
    cout << "First 5 tweets after merge sorting:\n";
-   for (int i = 0; i < 10; ++i) {
+   for (int i = 0; i < 20; ++i) {
      cout << "User: " << data2[i].get_username()
           << " | Length: " << data2[i].get_tweet_len()
-           << " | Text: " << data2[i].get_tweet() << "\n";
+           << "\n";
    }
 
 
