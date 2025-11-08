@@ -1,3 +1,7 @@
+''' Gaby: last semester I took an intro to computational linguistics class and we learned
+how to use matplotlib, so some of this code is refurbished code I used in the class
+to work with this dataset
+Used this resource as well for feautures of axes: https://matplotlib.org/stable/users/explain/quick_start.html'''
 import pandas as pd
 import matplotlib.pyplot as plt
 

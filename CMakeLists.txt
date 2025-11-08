@@ -4,6 +4,6 @@ project(project2_dsa)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(
-        project2_dsa main.cpp
+        project2_dsa working.cpp
         node.cpp
 )

@@ -1,8 +1,9 @@
 #DATASET TOKENIZATION FOR DSA PROJECT 2
-#NOTE: this code was run by Gaby at the beginning when the dataset had to be tokenized
-#after downloading the dataset, hence why the first file isn't found in github, the file was too big to add
-# so just the tokenized file was added, which is the "tokenized_dataset.csv"
-#This code doesn't really work right now because of that.
+'''NOTE: this code was run by Gaby at the beginning when the dataset had to be tokenized
+after downloading the dataset, hence why the first file isn't found in github, the file was too big to add
+so just the tokenized file was added, which is the "tokenized_dataset.csv" Running this code alone will not work
+right now.
+This code was also refurbished from my computaional linguistics class. '''
 import pandas as pd
 import re
 import ast
