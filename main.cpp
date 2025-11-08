@@ -4,6 +4,7 @@
 #include <sstream>
 #include <chrono>
 #include "node.h"
+#include <random>
 #include "Quicksort.h"
 #include "merge_sort.h"
 
@@ -55,10 +56,14 @@ struct Tweet {
         tweet.set_tweet(line);
         ss.ignore();
       }
+      else {
+        getline(ss, line, ',');
+        tweet.set_tweet(line);
+      }
 
       getline(ss, line);
       for (char c : line) {
-         if (c == '[' || c == ']' || c == ',' || c == '\'') {
+         if (c == '[' || c == ']' || c == ',' || c == '"' || c == '\n') {
            c = ' ';
          }
        }
@@ -78,7 +83,6 @@ struct Tweet {
  }
 
  int main() {
-
    vector<Node> tweets = read_tweets("tokenized_dataset.csv");
    Tweet tweet;
 
@@ -86,27 +90,44 @@ struct Tweet {
      return 1;
    }
 
+   srand(time(0));
+   int min = 0;
+   int max = tweets.size() - 1;
+   int points = 15;
+
+   vector <int> random_points;
+   for (int i = 0; i < points; i++) {
+     int rand1 = rand() % (max - min + 1);
+     random_points.push_back(rand1);
+   }
+   sort(random_points.begin(), random_points.end());
+
    vector<Node> data1 = tweets;
    auto start1 = chrono::high_resolution_clock::now();
-   quickSort_len(data1, 0, 100);
+   quickSort_len(data1, 0, tweets.size() - 1);
    auto stop1 = chrono::high_resolution_clock::now();
    auto duration1 = chrono::duration_cast<chrono::milliseconds>(stop1 - start1);
    cout << "Time taken by Merge Sort: " << duration1.count() << endl;
 
-   cout << "First 5 tweets after sorting:\n";
-   for (int i = 0; i < 10; ++i) {
-     cout << "User: " << data1[i].get_username()
+   cout << "Randomized tweets_lengths after sorting:\n";
+   for (int i  : random_points) {
+     cout << "T"<< i << " | " << "User: " << data1[i].get_username()
           << " | Length: " << data1[i].get_tweet_len()
            << " | Text: " << data1[i].get_tweet() << "\n";
    }
 
-   string outpath = "/Users/gabrielavelazquez/CLionProjects/project2_dsa/Project2_DSA/tweet_lengths.csv";
-   ofstream outfile(outpath);
-   outfile << "tweet, length" << endl;
-   for (int i = 0; i < 10; ++i) {
-     outfile << "T" << i  << ", " <<  data1[i].get_tweet_len() << endl;
-   }
-   outfile.close();
+   // auto start1_time = chrono::high_resolution_clock::now();
+   // quickSort_time(data1, 0, tweets.size() - 1);
+   // auto stop1_time = chrono::high_resolution_clock::now();
+   // auto duration1_time = chrono::duration_cast<chrono::milliseconds>(stop1_time - start1_time);
+   // cout << "Time taken by Merge Sort: " << duration1_time.count() << endl;
+   //
+   // cout << "Randomized tweets after sorting by date:\n";
+   // for (int i = 0 ; i < 10; i++) {
+   //   cout << "T"<< i << " | " << "User: " << data1[i].get_username()
+   //        << " | Time: " << data1[i].get_date_time()
+   //         << " | Text: " << data1[i].get_tweet() << "\n";
+   // }
 
    vector<Node> data2 = tweets;
    auto start2 = chrono::high_resolution_clock::now();
@@ -115,11 +136,33 @@ struct Tweet {
    auto duration2 = chrono::duration_cast<chrono::milliseconds>(stop2 - start2);
    cout << "\nTime taken by Merge Sort: " << duration2.count() << endl;
 
-   cout << "First 5 tweets after merge sorting:\n";
-   for (int i = 0; i < 20; ++i) {
-     cout << "User: " << data2[i].get_username()
+   cout << "Randomized tweets after merge sorting:\n";
+   for (int i : random_points) {
+     cout << "T"<< i << " | " << "User: " << data2[i].get_username()
           << " | Length: " << data2[i].get_tweet_len()
-           << "\n";
+          << " | Text: " << data1[i].get_tweet() << "\n";
    }
+
+//code for randomizing the data points for graph
+
+
+
+   string outpath = "/Users/gabrielavelazquez/CLionProjects/project2_dsa/Project2_DSA/tweet_lengths.csv";
+   ofstream outfile(outpath);
+   outfile << "tweet, length" << endl;
+   for (int i : random_points) {
+     outfile << "T"<< i  << ", " <<  data1[i].get_tweet_len() << endl;
+   }
+   outfile.close();
+
+   string outpath2 = "/Users/gabrielavelazquez/CLionProjects/project2_dsa/Project2_DSA/sorting_time.csv";\
+   ofstream outfile2(outpath2);
+   outfile2 << "sorting, time" << endl;
+   //outfile2 <<  ", " << "0" << endl;
+   outfile2 << "Quicksort" << "," << duration1 << endl;
+   outfile2 << "Mergesort" << "," << duration2 << endl;
+   outfile2.close();
+ }
+
 ///
 

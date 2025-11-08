@@ -78,10 +78,6 @@ int pivot_len(std::vector<Node>& tweet_length, int low, int high) {
     return down;
 }
 
-
-//fixed
-
-
 void quickSort_len(vector<Node> &tweet_length, int low, int high) {
     if (low < high) {
         int middle = pivot_len(tweet_length, low, high);
