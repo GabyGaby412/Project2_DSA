@@ -130,8 +130,8 @@ using namespace std;
    ofstream outfile2(outpath2);
    outfile2 << "sorting, time" << endl;
    //outfile2 <<  ", " << "0" << endl;
-   outfile2 << "Quicksort" << "," << duration1 << endl;
-   outfile2 << "Mergesort" << "," << duration2 << endl;
+   outfile2 << "Quicksort" << "," << duration1.count() << endl;
+   outfile2 << "Mergesort" << "," << duration2.count() << endl;
    outfile2.close();
  }
 
