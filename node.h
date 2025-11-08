@@ -14,6 +14,7 @@ class Node {
     std::string tweet;
     vector<string> tokens;
     int tweet_len;
+    int date_time;
 public:
     Node();
     Node(int month, int day, int year, std::string username, std::string tweet, std::string time_s);
@@ -26,6 +27,7 @@ public:
     std::string get_username();
     int get_tweet_len();
     int get_time();
+    int get_date_time();
 
     //Setters;
     void set_sentiment(int s);
