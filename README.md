@@ -13,3 +13,6 @@ Also run "  python -m ensurepip --upgrade
             python -m pip install pandas matplotlib  "
             with powershell or your terminal so that the python graph can work
 Ensure your clion or vcs code has a python interpreter
+
+The dataset link: https://www.kaggle.com/datasets/kazanova/sentiment140/data
+
