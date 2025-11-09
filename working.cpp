@@ -64,7 +64,7 @@ using namespace std;
    cout << "Insert Number of Points: " ;
    cin >>num;
    cin.ignore();
-   vector<Node> tweets = read_tweets("tokenized_dataset.csv");
+   vector<Node> tweets = read_tweets("Project2_DSA/tokenized_dataset.csv");
 
    if (tweets.empty()) {
      return 1;
@@ -110,7 +110,7 @@ using namespace std;
           << " | Text: " << data1[i].get_tweet() << "\n";
    }
 
-   string outpath = "tweet_lengths.csv";
+   string outpath = "Project2_DSA/tweet_lengths.csv";
    ofstream outfile(outpath);
    outfile << "tweet, length" << endl;
    for (int i : random_points) {
@@ -118,7 +118,7 @@ using namespace std;
    }
    outfile.close();
 
-   string outpath2 = "sorting_time.csv";\
+   string outpath2 = "Project2_DSA/sorting_time.csv";\
    ofstream outfile2(outpath2);
    outfile2 << "sorting, time" << endl;
    //outfile2 <<  ", " << "0" << endl;
