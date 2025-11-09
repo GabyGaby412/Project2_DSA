@@ -12,7 +12,7 @@ import ast
 df = pd.read_csv('training.1600000.processed.noemoticon.csv', 
                  encoding='latin-1', 
                  header=None,
-                 names=['sentiment', 'id', 'date', 'query', 'user', 'text'])
+                 names=['sentiment', 'id', 'date', 'query', 'user', 'text'], nrows=150000)
 
 #print(df.head)
 
