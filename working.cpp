@@ -64,7 +64,7 @@ using namespace std;
    cout << "Insert Number of Points: " ;
    cin >>num;
    cin.ignore();
-   vector<Node> tweets = read_tweets("/Users/gabrielavelazquez/CLionProjects/project2_dsa/Project2_DSA/tokenized_dataset.csv");
+   vector<Node> tweets = read_tweets("tokenized_dataset.csv");
 
    if (tweets.empty()) {
      return 1;
