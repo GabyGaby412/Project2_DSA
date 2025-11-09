@@ -5,14 +5,14 @@ using namespace std;
 
 class Node {
     int sentiment;
-    int id;
+    string id;
     string date_string;
     int date;
     int time;
     string query;
     std::string username;
     std::string tweet;
-    vector<string> tokens;
+    string tokens;
     int tweet_len;
     int date_time;
 public:
@@ -31,10 +31,10 @@ public:
 
     //Setters;
     void set_sentiment(int s);
-    void set_id(int i);
+    void set_id(const string& i);
     void set_date(const string& d);
     void set_query(const string& q);
     void set_username(const string& u);
     void set_tweet(const string& t);
-    void set_tokens(const std::vector<std::string>& tokks);
+    void set_tokens(const string& tokks);
 };
