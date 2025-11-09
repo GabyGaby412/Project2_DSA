@@ -72,6 +72,10 @@ using namespace std;
  }
 
  int main() {
+   int num;
+   cout << "Insert Number of Points: " ;
+   cin >>num;
+   cin.ignore();
    vector<Node> tweets = read_tweets("Project2_DSA/tokenized_dataset.csv");
 
    if (tweets.empty()) {
@@ -81,7 +85,7 @@ using namespace std;
    srand(time(0));
    int min = 0;
    int max = tweets.size() - 1;
-   int points = 15;
+   int points = num;
 
    vector <int> random_points;
    for (int i = 0; i < points; i++) {
@@ -118,7 +122,7 @@ using namespace std;
           << " | Text: " << data1[i].get_tweet() << "\n";
    }
 
-   string outpath = "tweet_lengths.csv";
+   string outpath = "Project2_DSA/tweet_lengths.csv";
    ofstream outfile(outpath);
    outfile << "tweet, length" << endl;
    for (int i : random_points) {
@@ -126,10 +130,11 @@ using namespace std;
    }
    outfile.close();
 
-   string outpath2 = "sorting_time.csv";\
+   string outpath2 = "Project2_DSA/sorting_time.csv";\
    ofstream outfile2(outpath2);
    outfile2 << "sorting, time" << endl;
    //outfile2 <<  ", " << "0" << endl;
+
    outfile2 << "Quicksort" << "," << duration1.count() <<"ms" << endl;
    outfile2 << "Mergesort" << "," << duration2.count() <<"ms" << endl;
    if (duration1.count() < duration2.count()) {
