@@ -3,7 +3,7 @@
 //default constructor
 Node::Node() {
     this->sentiment = 0;
-    this->id = 0;
+    this->id = "";
     this->date = 0;
     this->username = "";
     this->tweet = "";
@@ -60,12 +60,12 @@ int Node::get_date_time() {
     return this->date_time;
 }
 void Node::set_sentiment(int s) { sentiment = s; }
-void Node::set_id(int i) { id = i; }
+void Node::set_id(const string& i) { id = i; }
 void Node::set_date(const string& d) { date_string = d; }
 void Node::set_query(const string& q) { query = q; }
 void Node::set_username(const string& u) { username = u; }
 void Node::set_tweet(const string& t) { tweet = t; }
-void Node::set_tokens(const vector<string>& tokks) {
-    tokens = tokks;
-    tweet_len = tokks.size();
+void Node::set_tokens(const string& tokks) {
+    tweet_len = stoi(tokks);
+    //tweet_len = tokks.size();
 }
