@@ -132,6 +132,18 @@ using namespace std;
    //outfile2 <<  ", " << "0" << endl;
    outfile2 << "Quicksort" << "," << duration1.count() <<"ms" << endl;
    outfile2 << "Mergesort" << "," << duration2.count() <<"ms" << endl;
+   if (duration1.count() < duration2.count()) {
+     cout << "\n";
+     cout << "Quicksort Wins!" << endl;
+   }
+   if (duration1.count() > duration2.count()) {
+     cout << "\n";
+     cout << "Mergesort Wins!" << endl;
+   }
+   if (duration1.count() == duration2.count()) {
+     cout << "\n";
+     cout << "Draw Nobody Wins!" << endl;
+   }
    outfile2.close();
  }
 
