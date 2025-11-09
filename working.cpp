@@ -20,6 +20,8 @@ using namespace std;
     }
 
     string line;
+   getline(file, line);
+
     while (getline(file, line)) {
       istringstream ss(line);
       Node tweet;
@@ -28,7 +30,7 @@ using namespace std;
       tweet.set_sentiment(stoi(line));
 
       getline(ss, line, ',');
-      tweet.set_id(stoi(line));
+      tweet.set_id(line);
 
       getline(ss, line, ',');
       tweet.set_date(line);
@@ -49,34 +51,16 @@ using namespace std;
         getline(ss, line, ',');
         tweet.set_tweet(line);
       }
-
-      getline(ss, line);
-      for (char c : line) {
-         if (c == '[' || c == ']' || c == ',' || c == '"' || c == '\n') {
-           c = ' ';
-         }
-       }
-    string word;
-    //TA suggested I use tokenStream since it parses the tokens on its own.
-    stringstream tokenStream(line);
-    vector<string> tokens;
-    while (getline(tokenStream, word, ',')) {
-    tokens.push_back(word);
-    }
-    tweet.set_tokens(tokens);
-
-
+      getline(ss, line, ',');
+      tweet.set_tokens(line);
+      
     tweets.push_back(tweet);
     }
     return tweets;
  }
 
  int main() {
-   int num;
-   cout << "Insert Number of Points: " ;
-   cin >>num;
-   cin.ignore();
-   vector<Node> tweets = read_tweets("Project2_DSA/tokenized_dataset.csv");
+   vector<Node> tweets = read_tweets("/Users/gabrielavelazquez/CLionProjects/project2_dsa/Project2_DSA/tokenized_dataset.csv");
 
    if (tweets.empty()) {
      return 1;
@@ -84,8 +68,8 @@ using namespace std;
 
    srand(time(0));
    int min = 0;
-   int max = tweets.size() - 1;
-   int points = num;
+   int max = 100000;
+   int points = 15;
 
    vector <int> random_points;
    for (int i = 0; i < points; i++) {
@@ -96,7 +80,7 @@ using namespace std;
 
    vector<Node> data1 = tweets;
    auto start1 = chrono::high_resolution_clock::now();
-   quickSort_len(data1, 0, tweets.size() - 1);
+   quickSort_len(data1, 0, 100000);
    auto stop1 = chrono::high_resolution_clock::now();
    auto duration1 = chrono::duration_cast<chrono::milliseconds>(stop1 - start1);
    cout << "Time taken by Quick Sort: " << duration1.count() << endl;
@@ -110,7 +94,7 @@ using namespace std;
 
    vector<Node> data2 = tweets;
    auto start2 = chrono::high_resolution_clock::now();
-   tweet_merge_sort(data2);
+   tweet_len_merge_sort_helper(data2, 0, 100000);
    auto stop2 = chrono::high_resolution_clock::now();
    auto duration2 = chrono::duration_cast<chrono::milliseconds>(stop2 - start2);
    cout << "\nTime taken by Merge Sort: " << duration2.count() << endl;
@@ -122,7 +106,7 @@ using namespace std;
           << " | Text: " << data1[i].get_tweet() << "\n";
    }
 
-   string outpath = "Project2_DSA/tweet_lengths.csv";
+   string outpath = "tweet_lengths.csv";
    ofstream outfile(outpath);
    outfile << "tweet, length" << endl;
    for (int i : random_points) {
@@ -130,25 +114,12 @@ using namespace std;
    }
    outfile.close();
 
-   string outpath2 = "Project2_DSA/sorting_time.csv";\
+   string outpath2 = "sorting_time.csv";\
    ofstream outfile2(outpath2);
    outfile2 << "sorting, time" << endl;
    //outfile2 <<  ", " << "0" << endl;
-
-   outfile2 << "Quicksort" << "," << duration1.count() <<"ms" << endl;
-   outfile2 << "Mergesort" << "," << duration2.count() <<"ms" << endl;
-   if (duration1.count() < duration2.count()) {
-     cout << "\n";
-     cout << "Quicksort Wins!" << endl;
-   }
-   if (duration1.count() > duration2.count()) {
-     cout << "\n";
-     cout << "Mergesort Wins!" << endl;
-   }
-   if (duration1.count() == duration2.count()) {
-     cout << "\n";
-     cout << "Draw Nobody Wins!" << endl;
-   }
+   outfile2 << "Quicksort" << "," << duration1 << endl;
+   outfile2 << "Mergesort" << "," << duration2 << endl;
    outfile2.close();
  }
 
